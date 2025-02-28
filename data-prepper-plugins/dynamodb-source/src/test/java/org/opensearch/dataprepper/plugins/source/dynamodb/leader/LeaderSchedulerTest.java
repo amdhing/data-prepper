@@ -227,7 +227,7 @@ class LeaderSchedulerTest {
         ArgumentCaptor<DescribeTableRequest> describeTableRequestArgumentCaptor = ArgumentCaptor.forClass(DescribeTableRequest.class);
         verify(dynamoDbClient).describeTable(describeTableRequestArgumentCaptor.capture());
         DescribeTableRequest actualDescribeTableRequest = describeTableRequestArgumentCaptor.getValue();
-        assertThat(actualDescribeTableRequest.tableName(), equalTo(tableArn));
+        assertThat(actualDescribeTableRequest.tableName(), equalTo(tableName));
         // Should check PITR enabled or not
         verify(dynamoDbClient).describeContinuousBackups(any(DescribeContinuousBackupsRequest.class));
         // Acquire the init partition
@@ -259,7 +259,7 @@ class LeaderSchedulerTest {
         ArgumentCaptor<DescribeTableRequest> describeTableRequestArgumentCaptor = ArgumentCaptor.forClass(DescribeTableRequest.class);
         verify(dynamoDbClient).describeTable(describeTableRequestArgumentCaptor.capture());
         DescribeTableRequest actualDescribeTableRequest = describeTableRequestArgumentCaptor.getValue();
-        assertThat(actualDescribeTableRequest.tableName(), equalTo(tableArn));
+        assertThat(actualDescribeTableRequest.tableName(), equalTo(tableName));
 
         // Should check PITR enabled or not
         verify(dynamoDbClient).describeContinuousBackups(any(DescribeContinuousBackupsRequest.class));
@@ -288,7 +288,7 @@ class LeaderSchedulerTest {
         ArgumentCaptor<DescribeTableRequest> describeTableRequestArgumentCaptor = ArgumentCaptor.forClass(DescribeTableRequest.class);
         verify(dynamoDbClient).describeTable(describeTableRequestArgumentCaptor.capture());
         DescribeTableRequest actualDescribeTableRequest = describeTableRequestArgumentCaptor.getValue();
-        assertThat(actualDescribeTableRequest.tableName(), equalTo(tableArn));
+        assertThat(actualDescribeTableRequest.tableName(), equalTo(tableName));
 
         // Should check PITR enabled or not
         verify(dynamoDbClient).describeContinuousBackups(any(DescribeContinuousBackupsRequest.class));

@@ -234,7 +234,10 @@ public class LeaderScheduler implements Runnable {
      * Once created, the info should not be changed.
      */
     private TableInfo getTableInfo(final TableConfig tableConfig) {
-        final String tableName = tableConfig.getTableArn();
+        final String tableArn = tableConfig.getTableArn();
+        final String tableName = tableArn.contains("/") ?
+                tableArn.substring(tableArn.lastIndexOf('/') + 1) :
+                tableArn;
         DescribeTableResponse describeTableResult;
         try {
             // Need to call describe table to get the Key schema for table
